@@ -1,99 +1,48 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 
-void calculaXporN(void);
-void calculaXaLaN(void);
-int factorial(int n);
-void serieDeUnoEntreUnoMenosX(void);
-void serieMenosLogNatDe1menosX(void);
-void serieEaLaX(void);
+float convierteARadianes(float xGrad);
+long long factorial(int n);
 
 int main(void){
+    int i, n, t;
+    float x, xRad, s;
 
-    calculaXporN();
-    system("pause");
-    system("cls");
-    calculaXaLaN();
-    system("pause");
-    system("cls");
-    serieDeUnoEntreUnoMenosX();
-    system("pause");
-    system("cls");
-    serieMenosLogNatDe1menosX();
-    system("pause");
-    system("cls");
-    serieEaLaX();
+    printf("Dame x ");scanf("%f",&x);
+    printf("Dame n ");scanf("%d",&n);
+    xRad = convierteARadianes(x);
 
+    //La serie comienza con i=1
+    for(i=1, t=1, s=0; t<=n; t++, i = i+2){
+        //printf("s = %f\ti=%d\n",s,i);
+        if(t%2 != 0)
+            s = s + pow(xRad,i)/factorial(i);
+        else
+            s = s - pow(xRad,i)/factorial(i);
+    }
+    printf("\n\nsen(%f) = %f\n\n",x,s);
+
+    //La serie comienza con i=0
+    for(i=0, t=1, s=0; t<=n; t++, i = i+2){
+        //printf("s = %f\ti=%d\n",s,i);
+        if(t%2 != 0)
+            s = s + pow(xRad,i)/factorial(i);
+        else
+            s = s - pow(xRad,i)/factorial(i);
+    }
+    printf("\n\ncos(%f) = %f\n\n",x,s);
     return 0;
 }
 
-void calculaXporN(void){
-    int i,n;
-    float x,s;
-    printf("Calculo de x por n\n\n");
-    printf("Ingresa x ");scanf("%f",&x);
-    printf("Ingresa n ");scanf("%d",&n);
-    for(i=1, s=0; i<=n; i++){
-        //printf("s = %f\ti = %d\n",s,i);
-        s = s + x;
-    }
-    printf("\n\n%f x %d = %f\n\n",x,n,s);
+float convierteARadianes(float xGrad){
+    return xGrad * M_PI / 180;
 }
-void calculaXaLaN(void){
-    int i,n;
-    float x,p;
-    printf("Calculo de x^n\n\n");
-    printf("Ingresa x ");scanf("%f",&x);
-    printf("Ingresa n ");scanf("%d",&n);
-    for(i=1, p=1; i<=n; i++){
-        //printf("p = %f\ti = %d\n",p,i);
-        p = p * x;
-    }
-    printf("\n\n%f^ %d = %f\n\n",x,n,p);
-}
-int factorial(int n){
+long long factorial(int n){
     int i;
-    int f;
-    for(i=1, f=1; i<=n; i++){
-        //printf("f = %d\ti = %d\n",f,i);
-        f = f * i;
-    }
+    long long f=1;
+
+    for(i=2; i<=n; i++)
+        f *= i;
+
     return f;
-}
-void serieDeUnoEntreUnoMenosX(void){
-    int i,n;
-    float x,s;
-    printf("Calculo de 1/(1 - x) con n terminos de la serie\n\n");
-    printf("Ingresa x (solo valores |x| < 1)\n");scanf("%f",&x);
-    printf("Ingresa n ");scanf("%d",&n);
-    for(i=0, s=0; i<=n; i++){
-        //printf("s =%f\ti = %d\n",s,i);
-        s = s + pow(x,i);
-    }
-    printf("\n\n1/(1 - %f) = %f\n\n",x,s);
-}
-void serieMenosLogNatDe1menosX(void){
-    int i,n;
-    float x,s;
-    printf("Calculo de -ln(1 - x) con n terminos de la serie\n\n");
-    printf("Ingresa x (solo valores |x| < 1)\n");scanf("%f",&x);
-    printf("Ingresa n ");scanf("%d",&n);
-    for(i=1, s=0; i<=n; i++){
-        //printf("s =%f\ti = %d\n",s,i);
-        s = s + pow(x,i)/i;
-    }
-    printf("\n\n-ln(1 - %f) = %f\n\n",x,s);
-}
-void serieEaLaX(void){
-    int i,n;
-    float x,s;
-    printf("Calculo de e^x con n terminos de la serie\n\n");
-    printf("Ingresa x ");scanf("%f",&x);
-    printf("Ingresa n ");scanf("%d",&n);
-    for(i=0, s=0; i<=n; i++){
-        //printf("s =%f\ti = %d\n",s,i);
-        s = s + pow(x,i)/factorial(i);
-    }
-    printf("\n\ne^%f = %f\n\n",x,s);
 }
