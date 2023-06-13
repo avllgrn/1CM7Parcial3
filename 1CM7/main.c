@@ -1,48 +1,25 @@
 #include <stdio.h>
-#include <math.h>
-
-float convierteARadianes(float xGrad);
-long long factorial(int n);
+#include <stdlib.h>
 
 int main(void){
-    int i, n, t;
-    float x, xRad, s;
+    int V[10];//Arreglo para almacenar hasta 10 datos int
 
-    printf("Dame x ");scanf("%f",&x);
-    printf("Dame n ");scanf("%d",&n);
-    xRad = convierteARadianes(x);
+    V[0] = 1;//Se almacena, en la posicion 0, directamente un dato int
 
-    //La serie comienza con i=1
-    for(i=1, t=1, s=0; t<=n; t++, i = i+2){
-        //printf("s = %f\ti=%d\n",s,i);
-        if(t%2 != 0)
-            s = s + pow(xRad,i)/factorial(i);
-        else
-            s = s - pow(xRad,i)/factorial(i);
-    }
-    printf("\n\nsen(%f) = %f\n\n",x,s);
 
-    //La serie comienza con i=0
-    for(i=0, t=1, s=0; t<=n; t++, i = i+2){
-        //printf("s = %f\ti=%d\n",s,i);
-        if(t%2 != 0)
-            s = s + pow(xRad,i)/factorial(i);
-        else
-            s = s - pow(xRad,i)/factorial(i);
-    }
-    printf("\n\ncos(%f) = %f\n\n",x,s);
+    printf("Ingresa un valor int negativo ");
+    scanf("%d",&V[3]);//Se almacena, en la posicion 3, un dato int ingresado por teclado
+
+    V[6] = V[0] + V[3];//Se almacena, en la posicion 6, el resultado int
+                        //de sumar el dato int en la posicion 0
+                        //con el dato int en la posicion 3
+
+    V[9] = abs(V[6]);//Se almacena, en la posicion 9, el valor absoluto int
+                        //que retorna la funcion abs,
+                        //tras enviarle el valor int en la posicion 6
+
+    printf("%d + %d = %d\n", V[0], V[3], V[6]);
+    printf("|%d| = %d\n", V[6], V[9]);
+
     return 0;
-}
-
-float convierteARadianes(float xGrad){
-    return xGrad * M_PI / 180;
-}
-long long factorial(int n){
-    int i;
-    long long f=1;
-
-    for(i=2; i<=n; i++)
-        f *= i;
-
-    return f;
 }
