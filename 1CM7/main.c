@@ -1,33 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <time.h>
 
 int main(void){
-    float V[10];//Arreglo para almacenar hasta 10 datos float
-    int i;
+    float V[50];//Se reserva un vector de haste 50 elementos
+    int i, n;
+    srand(time(NULL));//Se inicializa la funcion para numeros aleatorios.
 
-    //Se muestra el contenido inicial (basura) de los diez elementos del arreglo,
-    //posicion por posicion, de la 0 a la 10 (sin llegar a 10)
-    for(i=0; i<10; i++)
-        printf("V[%d] = %f\n",i,V[i]);
+    printf("Cuantos elementos tendra V? ");
+    scanf("%d",&n);
 
-    system("pause");
-    system("cls");
+    if(n>0 && n<=50){//Se utilizan solo los que el usuario desee,
+                     //mientras no revase el tamano del vector.
+                     //Los espacios no utilizados, se desperdician
+        for(i=0; i<n; i++)
+            V[i] = rand() % 10; //Se rellena el vector con valores aleatorios
+                                //entre [0, 10)
 
-    //Se pide al usuario cada uno de los diez elementos del arreglo,
-    //posicion por posicion, de la 0 a la 10 (sin llegar a 10)
-    for(i=0; i<10; i++){
-        printf("Ingresa V[%d] ",i);
-        scanf("%f",&V[i]);
+        for(i=0; i<n; i++)
+            printf("V[%d] = %f\n",i, V[i]);
     }
-
-    system("pause");
-    system("cls");
-
-    //Se muestra el contenido final de los diez elementos del arreglo,
-    //posicion por posicion, de la 0 a la 10 (sin llegar a 10)
-    for(i=0; i<10; i++)
-        printf("V[%d] = %f\n",i,V[i]);
+    else
+        printf("Dimension del arreglo invalida...\n\n");
 
     return 0;
 }
