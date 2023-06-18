@@ -27,10 +27,10 @@ int main(void){
             V2[i] = rand() % 100; //Se rellena el vector con valores aleatorios entre [0, 100)
 
         for(i=0; i<n3; i++)
-            V3[i] = V1[i] + V2[i]; //Se suman los arreglos, elemento a elemento
+            V3[i] = V1[i] - V2[i]; //Se restan los arreglos, elemento a elemento
 
         for(i=0; i<n3; i++)//Se muestra simultaneamente los tres arreglos, elemento pot elemento
-            printf("[%d]\t%f\t+\t%f\t= %f\n",i, V1[i], V2[i], V3[i]);
+            printf("[%d]\t%f\t-\t%f\t= %f\n",i, V1[i], V2[i], V3[i]);
     }
 
     return 0;
