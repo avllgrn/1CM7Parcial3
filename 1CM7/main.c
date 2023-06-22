@@ -1,20 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 int main(void){
-    int i, j, m, n;
+    float M[40][50];//Declaracion de matriz de 40 filas y 50 columnas
 
-    printf("Ingresa m ");scanf("%d",&m);
-    printf("Ingresa n ");scanf("%d",&n);
+    M[12][23] = 45.67;//Se almacena un dato en la fila 12 columna 23
 
-    for(i=0; i<m; i++){//Contador externo es mas lento que el interno, da m vueltas
-        for(j=0; j<n; j++){ //Contador externo es mas rapido que el externo,
-                            //da n vueltas por cada vuelta del externo (total=n x m)
-            printf("(%d,%d)\t",i,j);
-        }
-        printf("\n");
-    }
+    printf("Ingresa un dato para la posicion M[24][45] ");
+    scanf("%f",&M[24][45]);//Se teclea un dato y se almacena en la fila 24 columna 45
+
+    M[34][46] = M[12][23] + M[24][45];//Se almacena un resultado en la fila 34 columna 46
+
+    printf("%f + %f = %f\n\n",M[12][23],M[24][45],M[34][46]);//Se muestran las po siciones utilizadas
 
     return 0;
 }
