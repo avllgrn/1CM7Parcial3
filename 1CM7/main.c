@@ -11,7 +11,7 @@ int main(void){
     for(i=0; i<m; i++){//Contador externo es mas lento que el interno, da m vueltas
         for(j=0; j<n; j++){ //Contador externo es mas rapido que el externo,
                             //da n vueltas por cada vuelta del externo (total=n x m)
-            printf("i=%dj=%d\t",i,j);
+            printf("(%d,%d)\t",i,j);
         }
         printf("\n");
     }
