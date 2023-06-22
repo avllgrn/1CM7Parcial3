@@ -40,7 +40,7 @@ void aplicaBurbuja(float X[50], int n){
     int veces, i;
     for(veces=1; veces<n; veces++){
         for(i=0; i<n-1; i++)//Compara las posiciones contiguas
-            if(X[i] > X[i+1]){//Intercambialas, si es necesario
+            if(X[i] < X[i+1]){//Intercambialas, si es necesario
                 aux = X[i];
                 X[i] = X[i+1];
                 X[i+1] = aux;
