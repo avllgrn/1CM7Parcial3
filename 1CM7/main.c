@@ -3,16 +3,17 @@
 
 int main(void){
     int M[50][50];//Se declara matriz de ints, para 50 filas y 50 columnas
-    int i, j, m, n;
+    int i, j, m, n, contador;
 
     printf("Cuantas filas? ");
     scanf("%d",&m);
     printf("Cuantas columnas? ");
     scanf("%d",&n);
 
+    contador=1;
     for(i=0; i<m; i++){
         for(j=0; j<n; j++){
-            M[i][j] = i;//Rellena la matriz con el valor de la fila
+            M[i][j] = contador++;//Rellena la matriz con el valor de contador
         }
     }
 
