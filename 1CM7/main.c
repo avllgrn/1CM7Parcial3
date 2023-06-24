@@ -39,7 +39,7 @@ int main(void){
 
         for(i=0; i<m3; i++){
             for(j=0; j<n3; j++){//Se suman elemento a elemento
-                M3[i][j] = M1[i][j] + M2[i][j];
+                M3[i][j] = M1[i][j] - M2[i][j];
 
             }
         }
@@ -60,7 +60,7 @@ int main(void){
             printf("\n");
         }
 
-        printf("\nM1+M2\n");
+        printf("\nM1-M2\n");
         for(i=0; i<m3; i++){//Se muestra de izquiera a derecha, hacia abajo
             for(j=0; j<n3; j++){
                 printf("%d\t",M3[i][j]);
