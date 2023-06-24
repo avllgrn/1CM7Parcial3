@@ -12,7 +12,7 @@ int main(void){
 
     for(i=0; i<m; i++){
         for(j=0; j<n; j++){
-            M[i][j] = j;//Rellena la matriz con el valor de la columna
+            M[i][j] = i;//Rellena la matriz con el valor de la fila
         }
     }
 
