@@ -2,16 +2,27 @@
 #include <stdlib.h>
 
 int main(void){
-    float M[40][50];//Declaracion de matriz de 40 filas y 50 columnas
+    int M[50][50];//Se declara matriz de ints, para 50 filas y 50 columnas
+    int i, j, m, n;
 
-    M[12][23] = 45.67;//Se almacena un dato en la fila 12 columna 23
+    printf("Cuantas filas? ");
+    scanf("%d",&m);
+    printf("Cuantas columnas? ");
+    scanf("%d",&n);
 
-    printf("Ingresa un dato para la posicion M[24][45] ");
-    scanf("%f",&M[24][45]);//Se teclea un dato y se almacena en la fila 24 columna 45
+    for(i=0; i<m; i++){
+        for(j=0; j<n; j++){
+            M[i][j] = j;//Rellena la matriz con el valor de la columna
+        }
+    }
 
-    M[34][46] = M[12][23] + M[24][45];//Se almacena un resultado en la fila 34 columna 46
-
-    printf("%f + %f = %f\n\n",M[12][23],M[24][45],M[34][46]);//Se muestran las po siciones utilizadas
+    printf("\nM\n");
+    for(i=0; i<m; i++){//Se muestra de izquiera a derecha, hacia abajo
+        for(j=0; j<n; j++){
+            printf("%d\t",M[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
