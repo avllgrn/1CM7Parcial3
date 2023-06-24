@@ -13,7 +13,10 @@ int main(void){
     contador=1;
     for(i=0; i<m; i++){
         for(j=0; j<n; j++){
-            M[i][j] = contador++;//Rellena la matriz con el valor de contador
+            if(i == j)//En la diagonal pricipal se pone 1
+                M[i][j] = 1;
+            else//En otros lados se pone 0
+                M[i][j] = 0;
         }
     }
 
