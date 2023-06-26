@@ -3,71 +3,107 @@
 #include <time.h>
 
 int main(void){
-    int M1[50][50];
-    int M2[50][50];
-    int M3[50][50];
-    int i, j, m1, n1, m2, n2, m3, n3;
+    float Calificaciones[50][11];
+    float menor,mayor;
+    int i,j,m,n,alumnoMenor,parcialMenor,alumnoMayor,parcialMayor,
+        aprobadosParcial,reprobadosParcial;
     srand(time(NULL));
 
-    printf("Cuantas filas para M1? ");
-    scanf("%d",&m1);
-    printf("Cuantas columnas para M1? ");
-    scanf("%d",&n1);
-    printf("Cuantas filas para M2? ");
-    scanf("%d",&m2);
-    printf("Cuantas columnas para M2? ");
-    scanf("%d",&n2);
+    printf("Cuantos alumnos? ");scanf("%d",&m);
+    printf("Cuantos parciales? ");scanf("%d",&n);
 
-    if(m1!=m2 || n1!=n2)
-        printf("\n\nError! No puede sumarse...\n\n");
-    else{
-        m3=m1;
-        n3=n2;
+    for(i=0; i<m; i++)
+        for(j=0; j<n; j++)
+            Calificaciones[i][j] = (rand()%101)/10.0;
 
-        for(i=0; i<m1; i++){
-            for(j=0; j<n1; j++){
-                M1[i][j] = rand() % 100;
-            }
+
+    for(i=0; i<m; i++)
+        Calificaciones[i][n] = 0.0;
+
+
+    for(i=0; i<m; i++){
+        for(j=0; j<n; j++){
+            Calificaciones[i][n] = Calificaciones[i][n] + Calificaciones[i][j];
         }
-
-        for(i=0; i<m2; i++){
-            for(j=0; j<n2; j++){
-                M2[i][j] = rand() % 100;
-
-            }
-        }
-
-        for(i=0; i<m3; i++){
-            for(j=0; j<n3; j++){//Se suman elemento a elemento
-                M3[i][j] = M1[i][j] - M2[i][j];
-
-            }
-        }
-
-        printf("\nM1\n");
-        for(i=0; i<m1; i++){//Se muestra de izquiera a derecha, hacia abajo
-            for(j=0; j<n1; j++){
-                printf("%d\t",M1[i][j]);
-            }
-            printf("\n");
-        }
-
-        printf("\nM2\n");
-        for(i=0; i<m2; i++){//Se muestra de izquiera a derecha, hacia abajo
-            for(j=0; j<n2; j++){
-                printf("%d\t",M2[i][j]);
-            }
-            printf("\n");
-        }
-
-        printf("\nM1-M2\n");
-        for(i=0; i<m3; i++){//Se muestra de izquiera a derecha, hacia abajo
-            for(j=0; j<n3; j++){
-                printf("%d\t",M3[i][j]);
-            }
-            printf("\n");
-        }
+        Calificaciones[i][n] =
+        Calificaciones[i][n] / n;
     }
+
+
+    printf("Alumno\t");
+    for(j=0; j<n; j++)
+        printf("P%d\t\t",j+1);
+    printf("Promedio\n\n");
+
+    for(i=0; i<m; i++){
+        printf("%d\t",i+1);
+        for(j=0; j<=n; j++){
+            printf("%f\t",Calificaciones[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n\n");
+
+
+
+    menor = Calificaciones[0][0];
+    alumnoMenor = 0;
+    parcialMenor = 0;
+    for(i=0; i<m; i++)
+        for(j=0; j<n; j++)
+            if(Calificaciones[i][j] < menor){
+                menor = Calificaciones[i][j];
+                alumnoMenor = i;
+                parcialMenor = j;
+            }
+
+    mayor = Calificaciones[0][0];
+    alumnoMayor = 0;
+    parcialMayor = 0;
+    for(i=0; i<m; i++)
+        for(j=0; j<n; j++)
+            if(Calificaciones[i][j] > mayor){
+                mayor = Calificaciones[i][j];
+                alumnoMayor = i;
+                parcialMayor = j;
+            }
+
+    aprobadosParcial = 0;
+    for(i=0; i<m; i++)
+        for(j=0; j<n; j++)
+            if(Calificaciones[i][j] >= 6)
+                aprobadosParcial++;
+
+    reprobadosParcial = 0;
+    for(i=0; i<m; i++)
+        for(j=0; j<n; j++)
+            if(Calificaciones[i][j] < 6)
+                reprobadosParcial++;
+
+
+    printf("Calif menor del semestre: %f, alumno %d, parcial %d\n",
+           menor,alumnoMenor+1,parcialMenor+1);
+    printf("Calif mayor del semestre: %f, alumno %d, parcial %d\n",
+           mayor,alumnoMayor+1,parcialMayor+1);
+    printf("Calificaciones aprobatorias por parcial hay %d\n",aprobadosParcial);
+    printf("Calificaciones aprobatorias por parcial hay %d\n",reprobadosParcial);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return 0;
 }
