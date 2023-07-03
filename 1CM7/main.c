@@ -1,28 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
 
 int main(void){
-    int Original[50], Copia[50], CopiaInvertida[50];
-    int i,j,n;
-    srand(time(NULL));
+    char cadena1[50], cadena2[50];
+    int n1, n2;
 
-    printf("Dame n ");scanf("%d",&n);
+    printf("Ingresa una cadena (sin espacios en blanco, con menos de 50 caracteres) ");
+    scanf("%s",&cadena1);
+    n1 = strlen(cadena1);
 
-    for(i=0; i<n; i++)
-        Original[i] = rand()%101;
+    printf("Ingresaste: %s\n",cadena1);
+    printf("Tiene %d caracteres.\n\n",n1);
 
+    printf("Ingresa otra cadena (sin espacios en blanco, con menos de 50 caracteres) ");
+    scanf("%s",&cadena2);
+    n2 = strlen(cadena2);
 
-    for(i=0; i<n; i++)
-        Copia[i] = Original[i];
-
-    for(i=0, j=n-1; i<n; i++, j--)
-        CopiaInvertida[j] = Original[i];
-
-
-    for(i=0; i<n; i++)
-        printf("Original[%d] = %d\tCopia[%d] = %d\tCopiaInvertida[%d] = %d\n",
-               i,Original[i], i,Copia[i], i,CopiaInvertida[i]);
+    printf("Ingresaste: %s\n",cadena2);
+    printf("Tiene %d caracteres.\n\n",n2);
 
     return 0;
 }
