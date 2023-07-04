@@ -10,12 +10,12 @@ int main(void){
     scanf("%s",&Origen);
     n = strlen(Origen);
 
-    for(i=0; i<n; i++)
-        Destino[i] = Origen[i];
+    for(i=0, j=n-1; i<n; i++, j--)
+        Destino[j] = Origen[i];
     Destino[i] = '\0';
 
     printf("\nIngresaste: %s\n",Origen);
-    printf("Copia\t  : %s\n\n",Destino);
+    printf("Invertida : %s\n\n",Destino);
     printf("Tienen %d caracteres.\n",n);
 
     return 0;
